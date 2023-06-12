@@ -1,0 +1,13 @@
+Metadata-Version: 1.1
+Name: opennre
+Version: 0.1
+Summary: An open source toolkit for relation extraction
+Home-page: https://github.com/thunlp/opennre
+Author: Tianyu Gao
+Author-email: gaotianyu1350@126.com
+License: UNKNOWN
+Description: UNKNOWN
+Platform: UNKNOWN
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Linux
