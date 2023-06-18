@@ -199,6 +199,7 @@ class NERTrainer(BaseTrainer):
         self.model.train()
 
     def test(self):
+        self.model.to('cuda')
         self.model.eval()
         self.logger.info("\n***** Running testing *****")
         self.logger.info("  Num instance = %d", len(self.test_data) * self.args.batch_size)
