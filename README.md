@@ -7,7 +7,7 @@ Official Implementation of our Paper "Rethinking Multimodal Entity and Relation 
 We borrow the idea of “back-translation” for this purpose. The text description is first "translated" to an image reference using diffusion models. The reference is “back-translated” to text words/phrases. The alignment/misalignment can then be evaluated and used to help the extraction.
 
 ## Model Architecture
-![Model](Figure/Model.png)
+![Model](Figure/Model.png) 
 
 The framework of the proposed Translation motivated Multimodal Representation learning (TMR), which generates divergence-aware cross-modal representations by introducing two additional streams of Generative Back-translation and High-Resource Divergence Estimation.
 
@@ -216,7 +216,7 @@ python run.py \
 
 Below is the Architecture of our Multimodal Divergence Estimator (MDE), which is trained on high-resource vision-language datasets, and Supervised Contrastive Learning (SCL) is applied to enhance the generalization.
 
-![model2](Figure/Model2.png)
+![model2](Figure/Model2.png)   ![case](Figure/case1.png)
 
 You can find the codes and pre-trained weights in [Divergence Estimator](Divergence Estimator/).
 
