@@ -212,5 +212,27 @@ python run.py \
       --sample_ratio=1.0 \
 ```
 
+## Divergence Estimation
+
+Below is the Architecture of our Multimodal Divergence Estimator (MDE), which is trained on high-resource vision-language datasets, and Supervised Contrastive Learning (SCL) is applied to enhance the generalization.
+
+![model2](Figure/Model2.png)
+
+You can find the codes and pre-trained weights in [Divergence Estimator](Divergence Estimator/).
+
+## Back Translation
+
+We generate the back-translated images from the text prompt with the [stable-diffusion model](https://github.com/CompVis/stable-diffusion). Please follow their instructions to install the corresponding environment.
+
+Also, we provide the scripts to extract and save the generated images in [Back Translation] (Back Translation/). Just modify the paths and run the scripts:
+```
+python diffusion.py
+```
+
+Some generated examples are shown as:
+
+![sup_case](Figure/sup_case.png)
+
+
 
 
