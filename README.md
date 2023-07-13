@@ -233,6 +233,18 @@ Some generated examples are shown as:
 
 ![sup_case](Figure/sup_case.png)
 
+## Citation
 
+If you find this repo helpful, please cite the following:
+
+``` latex
+@inproceedings{zheng2023rethinking,
+  title={Rethinking Multimodal Entity and Relation Extraction from a Translation Point of View},
+  author={Zheng, Changmeng and Feng, Junhao and Cai, Yi and Wei, Xiaoyong and Li, Qing},
+  booktitle={Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)},
+  pages={6810--6824},
+  year={2023}
+}
+```
 
 
