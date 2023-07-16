@@ -34,7 +34,7 @@ You need to download three kinds of data to run the code.
 
 1. The raw images of [MNRE](https://github.com/thecharm/MNRE).
 2. The visual objects from the raw images from [HVPNeT](https://github.com/zjunlp/HVPNeT), many thanks.
-3. Our generated images of MNRE.
+3. Our generated images of [MNRE](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21040753r_connect_polyu_hk/EU6TTUViKZJFudQEkGg_5aABTh68dox-ITUebV65PTvuGQ?e=0fys6m).
 
 Then you should put folders `img_org`, `img_vg`, `diffusion_pic` under the "./data" path.
 
