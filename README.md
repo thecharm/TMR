@@ -199,6 +199,8 @@ python -u run.py \
       --load_path='your_ner_ckpt_path'
 ```
 
+The checkpoints of our pre-trained models can be found here: ![ner_twitter_17](https://drive.google.com/drive/folders/1Dk7x5o0Z31TTx0l8dcFI_ctbWENeSL-V?usp=sharing) and ![ner_twitter_15](https://drive.google.com/drive/folders/18tNBGBcxg7HI3BFTR9Rkp8EA1hkQNgFb?usp=sharing).
+
 The settings are similar for RE testing:
 
 
