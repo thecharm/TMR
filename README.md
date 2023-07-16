@@ -220,13 +220,13 @@ Below is the Architecture of our Multimodal Divergence Estimator (MDE), which is
 
 ![model2](Figure/Model2.png)   ![case](Figure/case1.png)
 
-You can find the codes and pre-trained weights in [Divergence Estimator](Divergence Estimator/).
+You can find the codes and pre-trained weights under the directory`Divergence Estimator`.
 
 ## Back Translation
 
 We generate the back-translated images from the text prompt with the [stable-diffusion model](https://github.com/CompVis/stable-diffusion). Please follow their instructions to install the corresponding environment.
 
-Also, we provide the scripts to extract and save the generated images in [Back Translation] (Back Translation/). Just modify the paths and run the scripts:
+Also, we provide the scripts to extract and save the generated images under the directory `Back Translation`. Just modify the paths and run the scripts:
 ```
 python diffusion.py
 ```
