@@ -24,7 +24,7 @@ You need to download three kinds of data to run the code.
 
 1. The raw images of Twitter2015 and Twitter2017. 
 2. The visual objects from the raw images.
-3. Our generated images of Titter2015 and Twitter2017.
+3. Our generated images of [Twitter2015]() and [Twitter2017](https://drive.google.com/file/d/1m9uhILG_5uhGi53kpYkmSsUXhepWfoLK/view?usp=sharing).
 
 Then you should put folders `twitter2015_images`, `twitter2017_images`, `ner15_diffusion_pic`, `ner17_diffusion_pic`, `twitter2015_aux_images`, and `twitter2017_aux_images` under the "./data" directory.
 
@@ -199,7 +199,7 @@ python -u run.py \
       --load_path='your_ner_ckpt_path'
 ```
 
-The checkpoints of our pre-trained models can be found here: ![ner_twitter_17](https://drive.google.com/drive/folders/1Dk7x5o0Z31TTx0l8dcFI_ctbWENeSL-V?usp=sharing) and ![ner_twitter_15](https://drive.google.com/drive/folders/18tNBGBcxg7HI3BFTR9Rkp8EA1hkQNgFb?usp=sharing).
+The checkpoints of our pre-trained models can be found here: [ner_twitter_17](https://drive.google.com/drive/folders/1Dk7x5o0Z31TTx0l8dcFI_ctbWENeSL-V?usp=sharing) and [ner_twitter_15](https://drive.google.com/drive/folders/18tNBGBcxg7HI3BFTR9Rkp8EA1hkQNgFb?usp=sharing).
 
 The settings are similar for RE testing:
 
