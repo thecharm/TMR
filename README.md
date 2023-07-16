@@ -1,5 +1,5 @@
 # Source Code of TMR for Multimodal Entity and Relation Extraction
-Official Implementation of our Paper "Rethinking Multimodal Entity and Relation Extraction from A Translation Point of View" in ACL 2023.
+Official Implementation of our Paper ["Rethinking Multimodal Entity and Relation Extraction from A Translation Point of View"](https://aclanthology.org/2023.acl-long.376/) in ACL 2023.
 
 ## Motivation
 ![intro](Figure/Introd.png)
@@ -22,8 +22,8 @@ pip install -r requirements.txt
 
 You need to download three kinds of data to run the code.
 
-1. The raw images of Twitter2015 and Twitter2017. 
-2. The visual objects from the raw images.
+1. The raw images of [Twitter2015]((https://drive.google.com/file/d/1qAWrV9IaiBadICFb7mAreXy3llao_teZ/view?usp=sharing)) and [Twitter2017](https://drive.google.com/file/d/1ogfbn-XEYtk9GpUECq1-IwzINnhKGJqy/view?usp=sharing). 
+2. The visual objects from the raw images from [HVPNeT](https://github.com/zjunlp/HVPNeT), many thanks.
 3. Our generated images of [Twitter2015]() and [Twitter2017](https://drive.google.com/file/d/1m9uhILG_5uhGi53kpYkmSsUXhepWfoLK/view?usp=sharing).
 
 Then you should put folders `twitter2015_images`, `twitter2017_images`, `ner15_diffusion_pic`, `ner17_diffusion_pic`, `twitter2015_aux_images`, and `twitter2017_aux_images` under the "./data" directory.
@@ -32,8 +32,8 @@ Then you should put folders `twitter2015_images`, `twitter2017_images`, `ner15_d
 
 You need to download three kinds of data to run the code.
 
-1. The raw images of MNRE.
-2. The visual objects from the raw images.
+1. The raw images of [MNRE](https://github.com/thecharm/MNRE).
+2. The visual objects from the raw images from [HVPNeT](https://github.com/zjunlp/HVPNeT), many thanks.
 3. Our generated images of MNRE.
 
 Then you should put folders `img_org`, `img_vg`, `diffusion_pic` under the "./data" path.
