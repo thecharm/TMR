@@ -108,74 +108,40 @@ DATA_PATH = {
         
 }
 
-# image data
+# original image data
 IMG_PATH = {
-    'twitter15': '/home/thecharm/twitter15_data/twitter2015_images',
-    'twitter17': '/home/thecharm/data/twitter2017_images',
+    'twitter15': './data/twitter2015_images',
+    'twitter17': './data/twitter2017_images',
 }
 
+# generated image data
 IMG_PATH_dif = {
     'twitter15': {
-        'train': '/home/thecharm/re/RE/ner15_diffusion_pic/train/',
-        'test': '/home/thecharm/re/RE/ner15_diffusion_pic/test/',
-        'dev':  '/home/thecharm/re/RE/ner15_diffusion_pic/val/',
+        'train': './data/ner15_diffusion_pic/train/',
+        'test': './data/ner15_diffusion_pic/test/',
+        'dev':  './data/ner15_diffusion_pic/val/',
     },
     'twitter17': {
-        'train': '/home/thecharm/ner_17_diffusion/twitter17_diff_images',
-        'test': '/home/thecharm/ner_17_diffusion/twitter17_diff_images',
-        'dev': '/home/thecharm/ner_17_diffusion/twitter17_diff_images',
+        'train': './data/ner_17_diffusion/twitter17_diff_images',
+        'test': './data/ner_17_diffusion/twitter17_diff_images',
+        'dev': './data/ner_17_diffusion/twitter17_diff_images',
     }
 }
 
-# auxiliary images
+# auxiliary images for visual objects
 AUX_PATH = {
     'twitter15': {
-                'train': '/home/thecharm/twitter15_data/twitter2015_aux_images/train/crops',
-                'dev': '/home/thecharm/twitter15_data/twitter2015_aux_images/val/crops',
-                'test': '/home/thecharm/twitter15_data/twitter2015_aux_images/test/crops',
+                'train': './data/twitter2015_aux_images/train/crops',
+                'dev': './data/twitter2015_aux_images/val/crops',
+                'test': './data/twitter2015_aux_images/test/crops',
             },
 
     'twitter17': {
-                'train': '/home/thecharm/data/twitter2017_aux_images/train/crops',
-                'dev': '/home/thecharm/data/twitter2017_aux_images/val/crops',
-                'test': '/home/thecharm/data/twitter2017_aux_images/test/crops',
+                'train': './data/twitter2017_aux_images/train/crops',
+                'dev': './data/twitter2017_aux_images/val/crops',
+                'test': './data/twitter2017_aux_images/test/crops',
             }
 }
-
-# # original image data
-# IMG_PATH = {
-#     'twitter15': './data/twitter2015_images',
-#     'twitter17': './data/twitter2017_images',
-# }
-#
-# # generated image data
-# IMG_PATH_dif = {
-#     'twitter15': {
-#         'train': './data/ner15_diffusion_pic/train/',
-#         'test': './data/ner15_diffusion_pic/test/',
-#         'dev':  './data/ner15_diffusion_pic/val/',
-#     },
-#     'twitter17': {
-#         'train': './data/ner_17_diffusion/twitter17_diff_images',
-#         'test': './data/ner_17_diffusion/twitter17_diff_images',
-#         'dev': './data/ner_17_diffusion/twitter17_diff_images',
-#     }
-# }
-#
-# # auxiliary images for visual objects
-# AUX_PATH = {
-#     'twitter15': {
-#                 'train': './data/twitter2015_aux_images/train/crops',
-#                 'dev': './data/twitter2015_aux_images/val/crops',
-#                 'test': './data/twitter2015_aux_images/test/crops',
-#             },
-#
-#     'twitter17': {
-#                 'train': './data/twitter2017_aux_images/train/crops',
-#                 'dev': './data/twitter2017_aux_images/val/crops',
-#                 'test': './data/twitter2017_aux_images/test/crops',
-#             }
-# }
 
 def set_seed(seed=2021):
     """set random seed"""
