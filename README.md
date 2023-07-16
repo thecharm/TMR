@@ -9,10 +9,10 @@ We borrow the idea of “back-translation” for this purpose. The text descript
 ## Model Architecture
 ![Model](Figure/Model.png) 
 
-The framework of the proposed Translation motivated Multimodal Representation learning (TMR), which generates divergence-aware cross-modal representations by introducing two additional streams of Generative Back-translation and High-Resource Divergence Estimation.
+The framework of the proposed Translation motivated Multimodal Representation learning (TMR), generates divergence-aware cross-modal representations by introducing two additional streams of Generative Back-translation and High-Resource Divergence Estimation.
 
 ## Required Environment
-To run the codes, you need to install the requirements for [NER](TMR-NER/) or [RE](TMR-RE)
+To run the codes, you need to install the requirements for [NER](TMR-NER/) or [RE](TMR-RE).
 ```
 pip install -r requirements.txt
 ```
@@ -24,7 +24,7 @@ You need to download three kinds of data to run the code.
 
 1. The raw images of [Twitter2015]((https://drive.google.com/file/d/1qAWrV9IaiBadICFb7mAreXy3llao_teZ/view?usp=sharing)) and [Twitter2017](https://drive.google.com/file/d/1ogfbn-XEYtk9GpUECq1-IwzINnhKGJqy/view?usp=sharing). 
 2. The visual objects from the raw images from [HVPNeT](https://github.com/zjunlp/HVPNeT), many thanks.
-3. Our generated images of [Twitter2015]() and [Twitter2017](https://drive.google.com/file/d/1m9uhILG_5uhGi53kpYkmSsUXhepWfoLK/view?usp=sharing).
+3. Our generated images of [Twitter2015](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21040753r_connect_polyu_hk/EfjInJb_StpNr1tJa-kmnwIBqMAAuPkz7He2yrPFUYEbQw?e=2rKYnB) and [Twitter2017](https://drive.google.com/file/d/1m9uhILG_5uhGi53kpYkmSsUXhepWfoLK/view?usp=sharing).
 
 Then you should put folders `twitter2015_images`, `twitter2017_images`, `ner15_diffusion_pic`, `ner17_diffusion_pic`, `twitter2015_aux_images`, and `twitter2017_aux_images` under the "./data" directory.
 
@@ -42,10 +42,10 @@ Then you should put folders `img_org`, `img_vg`, `diffusion_pic` under the "./da
 To extract visual objects, we first use the NLTK parser to extract noun phrases from the text and apply the [visual grouding toolkit](https://github.com/zyang-ur/onestage_grounding) to detect objects. Detailed steps are as follows:
 
 1. Using the NLTK parser (or Spacy, textblob) to extract noun phrases from the text.
-2. Applying the [visual grouding toolkit](https://github.com/zyang-ur/onestage_grounding) to detect objects. For the original images, the extracted objects are stored in `img_vg`. The images of the object obey the following naming format: `imgname_pred_yolo_crop_num.png`, where `imgname` is the name of the raw image corresponding to the object, `num` is the number of the object predicted by the toolkit. For the generated images, the extracted objects are stored in the form of coordinates in file `./data/txt/mre_dif_train_dif.pth`.
-3. For the orginal images, we construct a dictionary to record the correspondence between the raw images and the objects. Taking `mre_train_dif.pth` as an example, the format of the dictionary can be seen as follows: `{imgname:['imgname_pred_yolo_crop_num0.png', 'imgname_pred_yolo_crop_num1.png', ...] }`, where key is the name of raw images, value is a List of the objects.
+2. Applying the [visual grounding toolkit](https://github.com/zyang-ur/onestage_grounding) to detect objects. For the original images, the extracted objects are stored in `img_vg`. The images of the object obey the following naming format: `imgname_pred_yolo_crop_num.png`, where `imgname` is the name of the raw image corresponding to the object, `num` is the number of the object predicted by the toolkit. For the generated images, the extracted objects are stored in the form of coordinates in the file `./data/txt/mre_dif_train_dif.pth`.
+3. For the original images, we construct a dictionary to record the correspondence between the raw images and the objects. Taking `mre_train_dif.pth` as an example, the format of the dictionary can be seen as follows: `{imgname:['imgname_pred_yolo_crop_num0.png', 'imgname_pred_yolo_crop_num1.png', ...] }`, where key is the name of raw images, value is a List of the objects.
 4. For the generated images, when processing images, we crop them using the coordinates in the file to obtain visual objects.
-5. For the original images, we suggest that you can use our visual objects. As for the generated images, if you want to use your own images instead of ours, we suggest that you can put your images in the path `./data/diffusion_pic` and detect visual objects through [visual grouding toolkit](https://github.com/zyang-ur/onestage_grounding) based on the giving phrases from `./data/txt/phrase_text_train.josn`.
+5. For the original images, we suggest that you can use our visual objects. As for the generated images, if you want to use your own images instead of ours, we suggest that you can put your images in the path `./data/diffusion_pic` and detect visual objects through [visual grounding toolkit](https://github.com/zyang-ur/onestage_grounding) based on the giving phrases from `./data/txt/phrase_text_train.json`.
 
 ## Path Structure
 The expected structures of Paths are:
@@ -53,7 +53,7 @@ The expected structures of Paths are:
 ### Multimodal Named Entity Recognition
 ```
 TMR-NER
- |-- ckpt # save the check point
+ |-- ckpt # save the checkpoint
  |-- data
  |    |-- twitter2015  # text data
  |    |    |-- train.txt
