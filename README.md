@@ -220,7 +220,7 @@ Below is the Architecture of our Multimodal Divergence Estimator (MDE), which is
 
 ![model2](Figure/Model2.png)   ![case](Figure/case1.png)
 
-You can find the codes and pre-trained weights under the directory`Divergence Estimator`.
+You can find the codes and [the model weights](https://drive.google.com/file/d/1YOIdZyy70tEgnGM7bvuGdEBfPX7PLwT7/view?usp=sharing) under the directory`Divergence Estimator`. If you want to apply this model in your custom dataset, please refer to the inference code of [ViLT](https://github.com/dandelin/ViLT).
 
 ## Back Translation
 
