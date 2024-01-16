@@ -210,7 +210,7 @@ python run.py \
       --max_epoch=20 \
       --batch_size=16 \
       --lr=1e-5 \
-	  --test_only \
+      --only_test \
       --sample_ratio=1.0 \
 ```
 
