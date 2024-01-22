@@ -28,16 +28,16 @@ class TMR_RE(nn.Module):
         self.hidden_size = 768*2
 
         self.nclass = 300
-        self.model_resnet50 = timm.create_model('resnet50', pretrained=True) # get the pre-trained ResNet model for the image
+        self.model_resnet50 = timm.create_model('./resnet50') # get the pre-trained ResNet model for the image
         for param in self.model_resnet50.parameters():
             param.requires_grad = True
 
         logging.info('Loading BERT pre-trained checkpoint.')
-        self.bert = transformers.BertModel.from_pretrained(pretrain_path) # get the pre-trained BERT model for the text
+        self.bert = transformers.BertModel.from_pretrained('./bert-base-uncased') # get the pre-trained BERT model for the text
         self.tokenizer = BertTokenizer.from_pretrained(pretrain_path)
         self.linear = nn.Linear(self.hidden_size, self.hidden_size)
         self.linear_pic = nn.Linear(2048, self.hidden_size//2)
-        self.linear_final = nn.Linear(self.hidden_size*2 + self.hidden_size//2, self.hidden_size)
+        self.linear_final = nn.Linear(self.hidden_size*2 + self.hidden_size, self.hidden_size)
 
         # the attention mechanism for fine-grained features
         self.linear_q_fine = nn.Linear(768, self.hidden_size//2)
@@ -50,6 +50,8 @@ class TMR_RE(nn.Module):
         self.linear_v_coarse = nn.Linear(self.hidden_size//2, self.hidden_size//2)
 
         self.linear_weights = nn.Linear(self.hidden_size*3, 3)
+        self.linear_phrases = nn.Linear(self.hidden_size//2, self.hidden_size)
+        self.linear_extend_pic = nn.Linear(self.hidden_size//2, self.hidden_size//2)
         self.dropout_linear = nn.Dropout(0.5)
 
     def forward(self, token, att_mask, pos1, pos2, token_phrase, att_mask_phrase, image_diff, image_ori, image_diff_objects, image_ori_objects, weights):
@@ -65,7 +67,6 @@ class TMR_RE(nn.Module):
             images_diff_objects: the visual objects from the generated images
             weights: the correlation coefficient between text and two types of images
         """
-        weights = weights.reshape(-1, 4)
 
         feature_DifImg_FineGrained = self.model_resnet50.forward_features(image_diff)
         feature_OriImg_FineGrained = self.model_resnet50.forward_features(image_ori)
@@ -76,23 +77,27 @@ class TMR_RE(nn.Module):
         pic_diff = torch.transpose(pic_diff, 1, 2)
         pic_diff = torch.reshape(pic_diff, (-1, 49, 2048))
         pic_diff = self.linear_pic(pic_diff)
+        pic_diff_ = torch.sum(pic_diff, dim=1)
 
         pic_ori = torch.reshape(feature_OriImg_FineGrained, (-1, 2048, 49))
         pic_ori = torch.transpose(pic_ori, 1, 2)
         pic_ori = torch.reshape(pic_ori, (-1, 49, 2048))
         pic_ori = self.linear_pic(pic_ori)
+        pic_ori_ = torch.sum(pic_ori,dim=1)
 
         pic_diff_objects = torch.reshape(feature_DifImg_CoarseGrained, (-1, 2048, 49))
         pic_diff_objects = torch.transpose(pic_diff_objects, 1, 2)
         pic_diff_objects = torch.reshape(pic_diff_objects, (-1, 3, 49, 2048))
         pic_diff_objects = torch.sum(pic_diff_objects, dim=2)
         pic_diff_objects = self.linear_pic(pic_diff_objects)
+        pic_diff_objects_ = torch.sum(pic_diff_objects,dim=1)
 
         pic_ori_objects = torch.reshape(feature_OriImg_CoarseGrained, (-1, 2048, 49))
         pic_ori_objects = torch.transpose(pic_ori_objects, 1, 2)
         pic_ori_objects = torch.reshape(pic_ori_objects, (-1, 3, 49, 2048))
         pic_ori_objects = torch.sum(pic_ori_objects, dim=2)
         pic_ori_objects = self.linear_pic(pic_ori_objects)
+        pic_ori_objects_ = torch.sum(pic_ori_objects,dim=1)
 
         output_text = self.bert(token, attention_mask=att_mask)
         hidden_text = output_text[0]
@@ -122,6 +127,7 @@ class TMR_RE(nn.Module):
 
         # coarse-grained textual features
         hidden_phrases = torch.sum(hidden_phrases, dim=1)
+        hidden_phrases = self.linear_phrases(hidden_phrases)
 
         # Get entity start hidden state
         onehot_head = torch.zeros(hidden_text.size()[:2]).float().to(hidden_text.device)  # (B, L)
@@ -132,10 +138,16 @@ class TMR_RE(nn.Module):
         tail_hidden = (onehot_tail.unsqueeze(2) * hidden_text).sum(1)  # (B, H)
         # fine-grained textual features
         x = torch.cat([head_hidden, tail_hidden], dim=-1)
-
-        x = torch.cat([x, hidden_phrases, pic_diffusion * weights[:, 3].reshape(-1, 1) + pic_diffusion_objects * weights[:, 2].reshape(-1, 1),
-                   pic_original * weights[:, 1].reshape(-1, 1) + pic_original_objects * weights[:, 0].reshape(-1, 1)], dim=-1)
-
+        
+        pic_ori_final = (pic_original+pic_ori_) * weights[:, 1].reshape(-1, 1) + (pic_original_objects+pic_ori_objects_) * weights[:, 0].reshape(-1,1)
+        pic_diff_final = (pic_diffusion+pic_diff_) * weights[:, 3].reshape(-1, 1) + (pic_diffusion_objects+pic_diff_objects_) * weights[:, 2].reshape(-1, 1)
+        
+        pic_ori = torch.tanh(self.linear_extend_pic(pic_ori_final))
+        pic_diff = torch.tanh(self.linear_extend_pic(pic_diff_final))
+        
+        # x = torch.cat([x, hidden_phrases, pic_diffusion * weights[:, 3].reshape(-1, 1) + pic_diffusion_objects * weights[:, 2].reshape(-1, 1),pic_original * weights[:, 1].reshape(-1, 1) + pic_original_objects * weights[:, 0].reshape(-1, 1)], dim=-1)
+        
+        x = torch.cat([x, hidden_phrases, pic_ori, pic_diff], dim=-1)
         x = self.linear_final(self.dropout_linear(x))
 
         return x
