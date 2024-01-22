@@ -214,6 +214,8 @@ python run.py \
       --sample_ratio=1.0 \
 ```
 
+We also provide the checkpoint of our RE model for your reference: [re_best](https://connectpolyu-my.sharepoint.com/:u:/r/personal/21040753r_connect_polyu_hk/Documents/best.pth.tar?csf=1&web=1&e=hkRbbi)
+
 ## Divergence Estimation
 
 Below is the Architecture of our Multimodal Divergence Estimator (MDE), which is trained on high-resource vision-language datasets, and Supervised Contrastive Learning (SCL) is applied to enhance the generalization.
