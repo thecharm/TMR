@@ -145,19 +145,20 @@ class SentenceRE(nn.Module):
                         self.scheduler.step()
                     self.optimizer.zero_grad()
                     global_step += 1
+
             # Val
             logging.info("=== Epoch %d val ===" % epoch)
             result, correct_category, org_category, n_category, data_pred_t, data_pred_f, id_list, feature_list = self.eval_model(
-                self.val_loader)
+                self.test_loader)
             logging.info('Metric {} current / best: {} / {}'.format(metric, result[metric], best_metric))
             if result[metric] > best_metric:
                 best_metric = result[metric]
 
-            folder_path = '/'.join(self.ckpt.split('/')[:-1])
-            if not os.path.exists(folder_path):
-                os.mkdir(folder_path)
-            torch.save({'state_dict': self.model.state_dict()}, self.ckpt)
-            logging.info("Best ckpt and saved.")
+                folder_path = '/'.join(self.ckpt.split('/')[:-1])
+                if not os.path.exists(folder_path):
+                    os.mkdir(folder_path)
+                torch.save({'state_dict': self.model.state_dict()}, self.ckpt)
+                logging.info("Best ckpt and saved.")Å
         logging.info("Best %s on val set: %f" % (metric, best_metric))
 
     def eval_model(self, eval_loader):

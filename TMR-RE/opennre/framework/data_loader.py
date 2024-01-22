@@ -204,8 +204,8 @@ class SentenceREDataset(data.Dataset):
         list_p2 = list(torch.tensor(np_pic2).unsqueeze(0))
         list_p3 = list(torch.tensor(np_pic3).unsqueeze(0))
         list_p4 = list(torch.tensor(np_pic4).unsqueeze(0))
-
-        res = [self.rel2id[item['relation']]] + [img_id] + seq + list_p1 + list_p2 + list_p3 + list_p4 + [torch.tensor(weight)]
+        
+        res = [self.rel2id[item['relation']]] + [img_id] + seq + list_p1 + list_p2 + list_p3 + list_p4 + [torch.tensor(weight).reshape(1,4)]
 
         return res  # label, seq1, seq2, ...,pic
 
