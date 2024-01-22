@@ -85,6 +85,7 @@ sentence_encoder = opennre.encoder.TMR_RE(
     )
 
 # Define the model
+torch.cuda.manual_seed_all(47)
 model = opennre.model.SoftmaxNN(sentence_encoder, len(rel2id), rel2id)
 
 # Define the whole training framework
