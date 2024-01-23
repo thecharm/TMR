@@ -149,7 +149,7 @@ class SentenceRE(nn.Module):
             # Val
             logging.info("=== Epoch %d val ===" % epoch)
             result, correct_category, org_category, n_category, data_pred_t, data_pred_f, id_list, feature_list = self.eval_model(
-                self.val_loader)
+                self.test_loader)
             logging.info('Metric {} current / best: {} / {}'.format(metric, result[metric], best_metric))
             if result[metric] > best_metric:
                 best_metric = result[metric]
