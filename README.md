@@ -1,5 +1,5 @@
 # Source Code of TMR for Multimodal Entity and Relation Extraction
-Official Implementation of our Paper ["Rethinking Multimodal Entity and Relation Extraction from A Translation Point of View"](https://aclanthology.org/2023.acl-long.376/) in ACL 2023.
+Official Implementation of our Paper ["Rethinking Multimodal Entity and Relation Extraction from A Translation Point of View"](https://aclanthology.org/2023.acl-long.376/) (Authors: Changmeng Zheng *, Junhao Feng *, Yi Cai, Xiao-Yong Wei, Qing Li, * indicates equal contribution) in ACL 2023.
 
 ## Motivation
 ![intro](Figure/Introd.png)
