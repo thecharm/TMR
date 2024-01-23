@@ -109,6 +109,19 @@ framework = opennre.framework.SentenceRE(
 if not args.only_test:
     framework.train_model('micro_f1')
 
+# Val
+for loader in [framework.val_loader]:
+    framework.load_state_dict(torch.load(ckpt_path)['state_dict'])
+    result, correct_category, org_category, n_category, data_pred_t, data_pred_f, id_list, feature_list = framework.eval_model(
+        loader)
+    acc_category = correct_category / org_category
+    # Print the result
+    logging.info('Val set results:\n')
+    logging.info('Accuracy: {}\n'.format(result['acc']))
+    logging.info('Micro precision: {}\n'.format(result['micro_p']))
+    logging.info('Micro recall: {}\n'.format(result['micro_r']))
+    logging.info('Micro F1: {}'.format(result['micro_f1']))
+
 # Test
 for loader in [framework.test_loader]:
     framework.load_state_dict(torch.load(ckpt_path)['state_dict'])
