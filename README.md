@@ -24,7 +24,7 @@ You need to download three kinds of data to run the code.
 
 1. The raw images of [Twitter2015]((https://drive.google.com/file/d/1qAWrV9IaiBadICFb7mAreXy3llao_teZ/view?usp=sharing)) and [Twitter2017](https://drive.google.com/file/d/1ogfbn-XEYtk9GpUECq1-IwzINnhKGJqy/view?usp=sharing). 
 2. The visual objects from the raw images from [HVPNeT](https://github.com/zjunlp/HVPNeT), many thanks.
-3. Our generated images of [Twitter2015](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21040753r_connect_polyu_hk/EfjInJb_StpNr1tJa-kmnwIBqMAAuPkz7He2yrPFUYEbQw?e=2rKYnB) and [Twitter2017](https://drive.google.com/file/d/1m9uhILG_5uhGi53kpYkmSsUXhepWfoLK/view?usp=sharing).
+3. Our generated images of [Twitter2015]([https://connectpolyu-my.sharepoint.com/:u:/g/personal/21040753r_connect_polyu_hk/EfjInJb_StpNr1tJa-kmnwIBqMAAuPkz7He2yrPFUYEbQw?e=2rKYnB](https://polyuit-my.sharepoint.com/:u:/g/personal/c1zheng_polyu_edu_hk/IQAjUk4vhPACRZu1j3s0C_AsARgF2RXc3nxbo_iYbe92W00?e=gVvKri)) and [Twitter2017]([https://drive.google.com/file/d/1m9uhILG_5uhGi53kpYkmSsUXhepWfoLK/view?usp=sharing](https://polyuit-my.sharepoint.com/:u:/g/personal/c1zheng_polyu_edu_hk/IQC0AvStshMiQpuWdKE7WxoOAf5exLjvEld-Kvu2W5Z8bkA?e=UgAtcq)).
 
 Then you should put folders `twitter2015_images`, `twitter2017_images`, `ner15_diffusion_pic`, `ner17_diffusion_pic`, `twitter2015_aux_images`, and `twitter2017_aux_images` under the "./data" directory.
 
@@ -34,7 +34,7 @@ You need to download three kinds of data to run the code.
 
 1. The raw images of [MNRE](https://github.com/thecharm/MNRE).
 2. The visual objects from the raw images from [HVPNeT](https://github.com/zjunlp/HVPNeT), many thanks.
-3. Our generated images of [MNRE](https://connectpolyu-my.sharepoint.com/:u:/g/personal/21040753r_connect_polyu_hk/EU6TTUViKZJFudQEkGg_5aABTh68dox-ITUebV65PTvuGQ?e=0fys6m).
+3. Our generated images of [MNRE]([https://connectpolyu-my.sharepoint.com/:u:/g/personal/21040753r_connect_polyu_hk/EU6TTUViKZJFudQEkGg_5aABTh68dox-ITUebV65PTvuGQ?e=0fys6m](https://polyuit-my.sharepoint.com/:u:/g/personal/c1zheng_polyu_edu_hk/IQDt4WCqD4ZtQ42WzDZd4MVBAQiZADN7KaHDpGsB5KPAIpY?e=zpJjld)).
 
 Then you should put folders `img_org`, `img_vg`, `diffusion_pic` under the "./data" path.
 
